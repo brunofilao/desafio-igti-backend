@@ -11,7 +11,7 @@ const create = async (req, res) => {
     value: req.body.value,
   });
   try {
-    const data = await grade.save(grade);
+    const data = await Grade.save(grade);
     res.send({ message: 'Grade inserido com sucesso' });
     logger.info(`POST /grade - ${JSON.stringify()}`);
   } catch (error) {
