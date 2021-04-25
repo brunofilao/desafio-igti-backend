@@ -4,14 +4,14 @@ import { logger } from '../config/logger.js';
 const Grade = db.grade;
 
 const create = async (req, res) => {
-  const grade = new Grade({
+  const newGrade = new Grade({
     name: req.body.name,
     subject: req.body.subject,
     type: req.body.type,
     value: req.body.value,
   });
   try {
-    const data = await Grade.save(grade);
+    const data = await Grade.save(newGrade);
     res.send({ message: 'Grade inserido com sucesso' });
     logger.info(`POST /grade - ${JSON.stringify()}`);
   } catch (error) {
@@ -31,7 +31,7 @@ const findAll = async (req, res) => {
     : {};
 
   try {
-    const data = await Grade.find(condition);
+    const data = await Grade.find({});
     res.send(data);
     logger.info(`GET /grade`);
   } catch (error) {
