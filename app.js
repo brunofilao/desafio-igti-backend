@@ -10,6 +10,7 @@ import { db } from './models/index.js';
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
+    console.log('Conectado com sucesso no banco de dados');
   } catch (error) {
     console.log(error);
     process.exit();
