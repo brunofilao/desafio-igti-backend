@@ -17,10 +17,6 @@ export default (mongoose) => {
       required: true,
       default: 0,
     },
-    lastModified: {
-      type: Date,
-      default: Date.now,
-    },
   });
 
   const Grade = mongoose.model('grade', schema, 'grade');

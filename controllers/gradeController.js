@@ -31,7 +31,7 @@ const findAll = async (req, res) => {
     : {};
 
   try {
-    const data = await Grade.find({});
+    const data = await Grade.find(condition);
     res.send(data);
     logger.info(`GET /grade`);
   } catch (error) {
@@ -46,9 +46,7 @@ const findOne = async (req, res) => {
   const id = req.params.id;
 
   try {
-    data = await Grade.findById({
-      _id: id,
-    });
+    const data = await Grade.findById({ _id: id });
     logger.info(`GET /grade - ${id}`);
     res.send(data);
   } catch (error) {
@@ -81,7 +79,7 @@ const remove = async (req, res) => {
 
   try {
     logger.info(`DELETE /grade - ${id}`);
-    const data = await Grade.findByAndRemove({ _id: id });
+    const data = await Grade.findByIdAndRemove({ _id: id });
 
     if (!data) {
       res.send('Nota não encontrada');
@@ -99,7 +97,7 @@ const remove = async (req, res) => {
 const removeAll = async (req, res) => {
   try {
     logger.info(`DELETE /grade`);
-    Grade.deleteMany();
+    Grade.remove({});
     res.send('Todos Registros removidos');
   } catch (error) {
     res.status(500).send({ message: 'Erro ao excluir todos as Grades' });
