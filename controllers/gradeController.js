@@ -97,7 +97,7 @@ const remove = async (req, res) => {
 const removeAll = async (req, res) => {
   try {
     logger.info(`DELETE /grade`);
-    Grade.remove({});
+    const data = Grade.deleteMany({});
     res.send('Todos Registros removidos');
   } catch (error) {
     res.status(500).send({ message: 'Erro ao excluir todos as Grades' });
